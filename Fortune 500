@@ -69,6 +69,8 @@ SELECT company_name, healthcare_benefits, paid_time_off_days, maternity_leave_we
 CASE WHEN healthcare_benefits = 1 AND
   paid_time_off_days >= 1 AND
   maternity_leave_weeks >= 1 THEN 'Full Benefits'
-ELSE 'Partial Benefits' END AS 'Benefits'
+ELSE 'Partial Benefits' END AS 'benefits'
 FROM fortune_companies
 ORDER BY company_name ASC;
+
+# 
