@@ -1,4 +1,4 @@
-# This code utilizes the following fake Fortune 500 data:
+# This code utilizes the following Fortune 500 data:
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
