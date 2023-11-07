@@ -71,4 +71,4 @@ CASE WHEN healthcare_benefits = 1 AND
   maternity_leave_weeks >= 1 THEN 'Full Benefits'
 ELSE 'Partial Benefits' END AS 'Benefits'
 FROM fortune_companies
-ORDER BY company_name;
+ORDER BY company_name ASC;
