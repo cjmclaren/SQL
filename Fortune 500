@@ -64,7 +64,7 @@ FROM fortune_companies
 ORDER BY revenue DESC
 LIMIT 10;
 
-# Use a CASE statement to create a new column describing the range of benefits of each company on the Fortune 500 List.
+# Use a CASE statement to create a new column that describes the range of benefits for each company on the Fortune 500 List.
 SELECT company_name, healthcare_benefits, paid_time_off_days, maternity_leave_weeks,
 CASE WHEN healthcare_benefits = 1 AND
   paid_time_off_days >= 1 AND
