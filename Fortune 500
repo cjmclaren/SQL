@@ -78,3 +78,8 @@ SELECT industry, COUNT(company_id)
 FROM fortune_companies
 GROUP BY industry
 HAVING COUNT(company_id) >= 5;
+
+# Find out which companies on the Fortune 500 list are in the Finance industry and have healthcare benefits.
+SELECT *
+FROM fortune_companies
+WHERE industry = "Finance" AND healthcare_benefits = 1;
