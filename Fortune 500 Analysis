@@ -90,7 +90,7 @@ FROM fortune_companies
 WHERE industry = "Technology";
 
 #Which industries in the Fortune 500 list have an average revenue of at least $300 billion?
-SELECT industry, ROUND(AVG(revenue),2) AS avg_revenue
+SELECT industry, ROUND(AVG(revenue),1) AS avg_revenue
 FROM fortune_companies
 GROUP BY industry
 HAVING avg_revenue >= 300;
