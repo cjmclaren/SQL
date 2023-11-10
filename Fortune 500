@@ -83,3 +83,8 @@ HAVING COUNT(company_id) >= 5;
 SELECT *
 FROM fortune_companies
 WHERE industry = "Finance" AND healthcare_benefits = 1;
+
+#What is the average number of employees for companies in the Technology industry on the Fortune 500 list?
+SELECT AVG(employees)
+FROM fortune_companies
+WHERE industry = "Technology";
