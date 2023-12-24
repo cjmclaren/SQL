@@ -68,7 +68,7 @@ FROM movies;
 SELECT *
 FROM tv_shows;
 
-/* Write a query showing the actors who are married next to the name of their spouses, and concatenate the spouse name without using the CONCAT operator */
+/* Write a query showing the actors who are married next to the name of their spouses, and concatenate the spouse name without using the CONCAT function */
 
 SELECT a.first_name, a.last_name,
   b.first_name || ' ' || b.last_name AS "spouse"
