@@ -50,6 +50,8 @@ INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("s
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "The Flash", "8");
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Cat Grant", "3");
 
+/* Show all data from all three tables */
+
 SELECT *
 FROM actors;
 
@@ -58,3 +60,11 @@ FROM movies;
 
 SELECT *
 FROM tv_shows;
+
+/* Write a query showing the actors who are married next to the name of their spouses, and concatenate the spouse name without using the CONCAT operator */
+
+SELECT a.first_name, a.last_name,
+  b.first_name || ' ' || b.last_name AS "spouse"
+FROM actors AS a
+INNER JOIN actors AS b
+ON a.spouse_id = b.id;
