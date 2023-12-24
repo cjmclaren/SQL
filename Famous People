@@ -1,4 +1,4 @@
-/* Create table with actors' personal information */
+/* Create a table with actors' personal information */
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT,
@@ -14,8 +14,9 @@ INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Henry", "Cavill",
 INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Melissa", "Benoist", "1988", "7");
 INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Chris", "Wood", "1988", "6");
 INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Ezra", "Miller", "1992");
+INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Emma", "Watson", "1990");
 
-/* Create table about movies, movie characters, and the ID numbers of the actors who play each character */
+/* Create a table about movies, movie characters, and the id numbers of actors who play them */
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,8 +34,11 @@ INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("su
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Batman vs Superman", "Superman", "5");
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "Fantastic Beasts and Where to Find Them", "Credence Barebone", "8");
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Proposal", "Andrew Paxton", "4");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Green Lantern", "Carol Ferris", "1");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Perks of Being a Wallflower", "Patrick", "8");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Perks of Being a Wallflower", "Sam", "9");
 
-/* Create table about tv shows, tv show characters, and the ID numbers of the actors who play each character */
+/* Create a table about tv shows, tv show characters, and the id numbers of actors who play them */
 
 CREATE TABLE tv_shows (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,6 +53,9 @@ INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("s
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "Mon-El", "7");
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "The Flash", "8");
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Cat Grant", "3");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "Gossip Girl", "Serena van der Woodsen", "1");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "Shrinking", "Paul", "2");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "The Tudors", "Charles Brandon", "5");
 
 /* Show all data from all three tables */
 
@@ -68,3 +75,9 @@ SELECT a.first_name, a.last_name,
 FROM actors AS a
 INNER JOIN actors AS b
 ON a.spouse_id = b.id;
+
+/* Write a query showing the actors who are not married. */
+
+SELECT first_name, last_name
+FROM actors
+WHERE spouse_ID IS NULL;
