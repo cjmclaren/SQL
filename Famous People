@@ -1,0 +1,60 @@
+/* Create table with actors' personal information */
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT,
+    birthyear INTEGER,
+    spouse_id INTEGER);
+    
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Blake", "Lively", "1987", "4");
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Harrison", "Ford", "1942", "3");
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Calista", "Flockhart", "1964", "2");
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Ryan", "Reynolds", "1976", "1");
+INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Henry", "Cavill", "1983");
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Melissa", "Benoist", "1988", "7");
+INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Chris", "Wood", "1988", "6");
+INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Ezra", "Miller", "1992");
+
+/* Create table about movies, movie characters, and the ID numbers of the actors who play each character */
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category TEXT,
+    movie_title TEXT,
+    character_name TEXT,
+    actor_id INTEGER);
+    
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Age of Adaline", "Adaline Bowman", "1");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Age of Adaline", "William Jones", "2");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Man of Steel", "Superman", "5");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "Indiana Jones and the Last Crusade", "Indiana Jones", "2");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Green Lantern", "Hal Jordan", "4");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Justice League", "The Flash", "8");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Batman vs Superman", "Superman", "5");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "Fantastic Beasts and Where to Find Them", "Credence Barebone", "8");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Proposal", "Andrew Paxton", "4");
+
+/* Create table about tv shows, tv show characters, and the ID numbers of the actors who play each character */
+
+CREATE TABLE tv_shows (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category TEXT,
+    show_title TEXT,
+    character_name TEXT,
+    actor_id INTEGER);
+    
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Supergirl", "3");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Mon-El", "7");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "Supergirl", "3");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "Mon-El", "7");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "The Flash", "The Flash", "8");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Cat Grant", "3");
+
+SELECT *
+FROM actors;
+
+SELECT *
+FROM movies;
+
+SELECT *
+FROM tv_shows;
