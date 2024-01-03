@@ -68,7 +68,7 @@ FROM movies;
 SELECT *
 FROM tv_shows;
 
-/* Write a query showing the actors who are married next to the name of their spouses, and concatenate the spouse name without using the CONCAT function */
+/* Write a query showing the actors who are married next to the name of their spouses */
 
 SELECT a.first_name, a.last_name,
   b.first_name || ' ' || b.last_name AS "spouse"
@@ -81,3 +81,13 @@ ON a.spouse_id = b.id;
 SELECT first_name, last_name
 FROM actors
 WHERE spouse_ID IS NULL;
+
+/* Which movies and tv shows has Ezra Miller been in? */
+
+SELECT movies.movie_title,
+    tv_shows.show_title
+FROM actors AS a
+LEFT JOIN movies ON a.id = movies.actor_id
+LEFT JOIN tv_shows ON a.id = tv_shows.actor_id
+WHERE a.first_name = "Ezra"
+    AND a.last_name = "Miller";
