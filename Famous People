@@ -1,20 +1,22 @@
 /* Create a table with actors' personal information */
+
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT,
     last_name TEXT,
     birthyear INTEGER,
+    gender TEXT,
     spouse_id INTEGER);
     
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Blake", "Lively", "1987", "4");
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Harrison", "Ford", "1942", "3");
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Calista", "Flockhart", "1964", "2");
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Ryan", "Reynolds", "1976", "1");
-INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Henry", "Cavill", "1983");
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Melissa", "Benoist", "1988", "7");
-INSERT INTO actors (first_name, last_name, birthyear, spouse_id) VALUES ("Chris", "Wood", "1988", "6");
-INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Ezra", "Miller", "1992");
-INSERT INTO actors (first_name, last_name, birthyear) VALUES ("Emma", "Watson", "1990");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Blake", "Lively", "1987", "female", "4");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Harrison", "Ford", "1942", "male", "3");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Calista", "Flockhart", "1964", "female", "2");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Ryan", "Reynolds", "1976", "male", "1");
+INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Henry", "Cavill", "1983", "male");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Melissa", "Benoist", "1988", "female", "7");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Chris", "Wood", "1988", "male", "6");
+INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Ezra", "Miller", "1992", "male");
+INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Emma", "Watson", "1990", "female");
 
 /* Create a table about movies, movie characters, and the id numbers of actors who play them */
 
@@ -76,7 +78,7 @@ FROM actors AS a
 INNER JOIN actors AS b
 ON a.spouse_id = b.id;
 
-/* Write a query showing the actors who are not married. */
+/* Which actors are not married? */
 
 SELECT first_name, last_name
 FROM actors
@@ -91,3 +93,38 @@ LEFT JOIN movies ON a.id = movies.actor_id
 LEFT JOIN tv_shows ON a.id = tv_shows.actor_id
 WHERE a.first_name = "Ezra"
     AND a.last_name = "Miller";
+
+/* How many superhero movies are there? */
+
+SELECT COUNT(DISTINCT movie_title) AS "Number of Superhero Movies"
+FROM movies
+WHERE category = "superheroes";
+
+/* Who acted in The Age of Adaline? */
+
+SELECT m.movie_title, a.first_name, a.last_name
+FROM movies AS m
+JOIN actors AS a ON m.actor_id = a.id
+WHERE m.movie_title = "The Age of Adaline";
+
+/* Add a category classifying the age group of each actor and order the results from youungest to oldest. */
+
+SELECT *,
+	CASE
+    	WHEN birthyear <= 1959 THEN "senior citizen"
+      WHEN birthyear <= 1984 THEN "over the hill"
+      ELSE "younger generation"
+	END AS "age category"
+FROM actors
+ORDER BY birthyear desc;
+
+/* How many actors are there of each gender? */
+
+SELECT gender, COUNT(*) AS number
+FROM actors
+GROUP BY gender;
+
+/* What is the average age of actors? */
+
+SELECT ROUND(AVG(CURRENT_DATE - birthyear),1) AS average_age
+FROM actors;
