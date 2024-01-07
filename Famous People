@@ -1,5 +1,4 @@
 /* Create a table with actors' personal information */
-
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT,
@@ -17,6 +16,12 @@ INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES 
 INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Chris", "Wood", "1988", "male", "6");
 INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Ezra", "Miller", "1992", "male");
 INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Emma", "Watson", "1990", "female");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Sean", "Astin", "1971", "male", "11");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Christine", "Astin", "1967", "female", "10");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Jim", "Parsons", "1973", "male", "13");
+INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Todd", "Spiewak", "1977", "male", "12");
+INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Kaley", "Cuoco", "1985", "female");
+
 
 /* Create a table about movies, movie characters, and the id numbers of actors who play them */
 
@@ -39,6 +44,9 @@ INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("dr
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("superheroes", "Green Lantern", "Carol Ferris", "1");
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Perks of Being a Wallflower", "Patrick", "8");
 INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("drama", "The Perks of Being a Wallflower", "Sam", "9");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "The Goonies", "Mikey", "10");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "The Fellowship of the Ring", "Sam", "10");
+INSERT INTO movies (category, movie_title, character_name, actor_id) VALUES ("adventure", "Home", "Oh", "12");
 
 /* Create a table about tv shows, tv show characters, and the id numbers of actors who play them */
 
@@ -58,6 +66,12 @@ INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("s
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "Gossip Girl", "Serena van der Woodsen", "1");
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "Shrinking", "Paul", "2");
 INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "The Tudors", "Charles Brandon", "5");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("superheroes", "Supergirl", "Pete Andrews", "10");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "Stranger Things", "Bob Newby", "10");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "The Big Bang Theory", "Dr. Greg Pemberton", "10");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "The Big Bang Theory", "Sheldon Cooper", "12");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("drama", "The Big Bang Theory", "Penny", "14");
+INSERT INTO tv_shows (category, show_title, character_name, actor_id) VALUES ("adventure", "Harley Quinn", "Harley Quinn", "14");
 
 /* Show all data from all three tables */
 
@@ -112,8 +126,8 @@ WHERE m.movie_title = "The Age of Adaline";
 SELECT *,
 	CASE
     	WHEN birthyear <= 1959 THEN "senior citizen"
-      WHEN birthyear <= 1984 THEN "over the hill"
-      ELSE "younger generation"
+        WHEN birthyear <= 1984 THEN "over the hill"
+        ELSE "younger generation"
 	END AS "age category"
 FROM actors
 ORDER BY birthyear desc;
