@@ -22,7 +22,6 @@ INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES 
 INSERT INTO actors (first_name, last_name, birthyear, gender, spouse_id) VALUES ("Todd", "Spiewak", "1977", "male", "12");
 INSERT INTO actors (first_name, last_name, birthyear, gender) VALUES ("Kaley", "Cuoco", "1985", "female");
 
-
 /* Create a table about movies, movie characters, and the id numbers of actors who play them */
 
 CREATE TABLE movies (
