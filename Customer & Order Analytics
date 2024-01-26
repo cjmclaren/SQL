@@ -54,4 +54,6 @@ AND orderID <> 'Order ID';
 SELECT Product, SUM(Quantity)
 FROM BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
+AND LENGTH(orderID) = 6
+AND orderID <> 'Order ID'
 GROUP BY Product;
