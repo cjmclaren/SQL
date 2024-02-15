@@ -88,3 +88,19 @@ ORDER BY COUNT(artist_name) DESC;
 # 8. Is there any correlation between how many words are in a song and energy level?
 SELECT AVG(speechiness), AVG(energy)
 FROM BIT_DB.Spotifydata;
+
+# 9. Find all the artists with an average popularity rating of at least 90 and label them as a Top Artist.
+WITH popularity_average_cte AS (
+SELECT
+    artist_name,
+    AVG(popularity) AS avg_popularity
+FROM Spotifydata
+GROUP BY artist_name
+)
+
+SELECT
+    artist_name,
+    avg_popularity,
+    'Top Artist' AS Label
+FROM popularity_average_cte
+WHERE avg_popularity >= 90;
