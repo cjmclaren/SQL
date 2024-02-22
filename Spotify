@@ -104,3 +104,12 @@ SELECT
     'Top Artist' AS Label
 FROM popularity_average_cte
 WHERE avg_popularity >= 90;
+
+# 10. What is the average loudness for Top 50 songs compared to Olivia Rodrigo's songs?
+SELECT
+    artist_name,
+    track_name,
+    loudness,
+    AVG(loudness) OVER (PARTITION BY artist_name) AS avg_loudness
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo';
