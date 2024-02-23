@@ -149,3 +149,24 @@ AND i.Total >
 (SELECT Total
 FROM chinook.invoices
 WHERE Total >= 10);
+
+# 16. Which countries have more than 5 customers?
+WITH customers_cte AS (
+SELECT c.Country,
+COUNT(c.CustomerID) AS TotalCustomers
+FROM customers c
+GROUP BY c.Country
+)
+
+SELECT Country,
+TotalCustomers
+FROM customers_cte
+WHERE TotalCustomers>=5;
+
+# 17. What is the average invoice total for Irish customers compared to other invoices?
+SELECT
+    BillingCountry,
+    Total,
+    AVG(Total) OVER (PARTITION BY BillingCountry) AS AvgTotal
+FROM chinook.invoices
+WHERE BillingCountry = "Ireland";
