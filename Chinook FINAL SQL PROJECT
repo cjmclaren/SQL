@@ -137,12 +137,11 @@ GROUP BY emp.EmployeeID
 ORDER BY TotalSales DESC
 LIMIT 1;
 
-# 15. Which customers have invoices worth ten dollars or more, and which countries are they from?
+# 15. Which customers have invoices worth ten dollars or more?
 SELECT
     c.FirstName,
     c.LastName,
-    i.Total,
-    c.country
+    i.Total
 FROM chinook.customers c, chinook.invoices i
 WHERE c.CustomerID = i.CustomerID
 AND i.Total >
@@ -181,8 +180,8 @@ AND i.InvoiceDate BETWEEN '2009-04-01' AND '2009-06-30'
 AND c.Company NOT NULL;
 
 # 19. Give the full names of all customers who bought Reggae songs.
-SELECT DISTINCT c.FirstName || ' ' || C.LastName AS FullName,
-    G.Name AS Genre
+SELECT DISTINCT c.FirstName || ' ' || c.LastName AS FullName,
+    g.Name AS Genre
 FROM chinook.customers c
 JOIN chinook.invoices i
     ON c.CustomerID = i.CustomerID
