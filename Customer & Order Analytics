@@ -95,3 +95,10 @@ FROM BIT_DB.JanSales
 GROUP BY Product
 ORDER BY Revenue DESC
 LIMIT 1;
+
+# 14. Which product brought in the least revenue in January and how much revenue did it bring in total?
+SELECT Product, SUM(Quantity*price) AS Revenue
+FROM BIT_DB.JanSales
+GROUP BY Product
+ORDER BY Revenue ASC
+LIMIT 1;
